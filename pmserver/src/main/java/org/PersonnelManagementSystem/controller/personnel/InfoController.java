@@ -51,7 +51,8 @@ public class InfoController {
             @RequestParam(defaultValue = "") String keyword,
             Long politicId, Long nationId, Long posId,
             Long jobLevelId, String engageForm,
-            Long departmentId, String beginDateScope) {
+            Long departmentId, String beginDateScope
+    ) {
         Map<String, Object> map = new HashMap<>();
         /**
          * 处理map
@@ -81,10 +82,11 @@ public class InfoController {
         return RespBean.error("修改失败!");
     }
 
+    @Deprecated
     @ApiOperation(value = "删除员工信息")
     @ApiImplicitParam(name = "id", value = "要删除的员工的id", required = true)
-    @DeleteMapping("/")
-    public RespBean deleteEmployee(String ID) {
+    @DeleteMapping("/{id}")
+    public RespBean deleteEmployee(@PathVariable String id) {
         /**
          * 处理
          * return RespBean.ok("删除成功!");

@@ -17,19 +17,18 @@ import java.util.List;
  * @create: 2019-10-20 11:06
  */
 public class Hr implements Serializable, UserDetails {
-    private String id;
-    private String HrId;
-    private String email;   //使用email作为用户名
+    private Long id;
+    //使用email作为用户名
+    private String email;
     private String phone;
-    private String pwd;
-    private String firstName;
-    private String lastName;
     private String telephone;
+    private String password;
+    private String name;
     private String address;
     private String avatar;
     private String remark;
     private boolean enable;
-    private List<Role> role;
+    private List<Role> roles;
 
     public Hr() {
     }
@@ -49,7 +48,8 @@ public class Hr implements Serializable, UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        for (Role role : role) {
+        //遍历roles来获得所有的权限
+        for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
         return authorities;
@@ -58,7 +58,7 @@ public class Hr implements Serializable, UserDetails {
     @JsonIgnore
     @Override
     public String getPassword() {
-        return pwd;
+        return password;
     }
 
     @JsonIgnore
@@ -79,108 +79,7 @@ public class Hr implements Serializable, UserDetails {
         return true;
     }
 
-    public String getId() {
-        return id;
+    public void setRole(List<Role> roles) {
+        this.roles = roles;
     }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getHrId() {
-        return HrId;
-    }
-
-    public void setHrId(String hrId) {
-        HrId = hrId;
-    }
-
-    public boolean isEnable() {
-        return enable;
-    }
-
-    public void setEnable(boolean enable) {
-        this.enable = enable;
-    }
-
-    public List<Role> getRole() {
-        return role;
-    }
-
-    public void setRole(List<Role> role) {
-        this.role = role;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
 }

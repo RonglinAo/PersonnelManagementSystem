@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.PersonnelManagementSystem.mapper.HrMapper">
+    <select id="loadHrByHrEmail" resultType="org.PersonnelManagementSystem.bean.Hr">
+        SELECT *
+        FROM hr
+        WHERE email = #{email};
+    </select>
+
+    <select id="getHrRoleByHrUuid" resultType="org.PersonnelManagementSystem.bean.Role">
+        SELECT *
+        FROM hr_role h_r,
+             role r
+        WHERE h_r.hr$id = #{id}
+          AND r.id = h_r.hr$id;
+    </select>
+</mapper>

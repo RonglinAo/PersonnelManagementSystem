@@ -19,7 +19,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -33,7 +33,7 @@ import java.io.PrintWriter;
 
 /**
  * @program: PersonnelManagementSystem
- * @description: Spring scurity config
+ * @description: Spring security config
  * @author: Ronglin.A
  * @create: 2019-10-21 17:18
  */
@@ -52,7 +52,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(hrService)
-                .passwordEncoder(new BCryptPasswordEncoder());
+//                .passwordEncoder(new BCryptPasswordEncoder());
+                .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 
     @Override
@@ -72,7 +73,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                 })
                 .and()
-                .formLogin().loginPage("/login_p").loginProcessingUrl("/login")
+                .formLogin()
+                //.loginPage("/login_p")
+                .loginProcessingUrl("/login")
                 .usernameParameter("username").passwordParameter("password")
                 .failureHandler(new AuthenticationFailureHandler() {
                     @Override

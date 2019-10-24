@@ -8,34 +8,34 @@
         <result column="component" property="component" javaType="java.lang.Object"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="iconCls" property="iconCls" jdbcType="VARCHAR"/>
-        <result column="keepAlive" property="keepAlive" jdbcType="tinyint"/>
-        <result column="parent$id" property="parent$id" jdbcType="int"/>
-        <association property="meta" javaType="org.sang.bean.MenuMeta">
+        <result column="keepAlive" property="keepAlive" jdbcType="BIT"/>
+        <result column="parent$id" property="parent$id" jdbcType="INTEGER"/>
+        <association property="meta" javaType="org.PersonnelManagementSystem.bean.MenuMeta">
             <result column="keepAlive" property="keepAlive"/>
             <result column="requireAuth" property="requireAuth"/>
         </association>
-        <collection property="roles" ofType="org.sang.bean.Role">
+        <collection property="roles" ofType="org.PersonnelManagementSystem.bean.Role">
             <id column="rid" property="id"/>
             <result column="rname" property="name"/>
             <result column="rnamezh" property="nameZh"/>
         </collection>
-        <collection property="children" ofType="org.sang.bean.Menu">
+        <collection property="children" ofType="org.PersonnelManagementSystem.bean.Menu">
             <id column="id2" property="id"/>
             <result column="path2" property="path" jdbcType="VARCHAR"/>
             <result column="component2" property="component" jdbcType="VARCHAR"/>
             <result column="name2" property="name" jdbcType="VARCHAR"/>
             <result column="iconCls2" property="iconCls" jdbcType="VARCHAR"/>
-            <association property="meta" javaType="org.sang.bean.MenuMeta">
+            <association property="meta" javaType="org.PersonnelManagementSystem.bean.MenuMeta">
                 <result column="keepAlive2" property="keepAlive"/>
                 <result column="requireAuth2" property="requireAuth"/>
             </association>
-            <collection property="children" ofType="org.sang.bean.Menu">
+            <collection property="children" ofType="org.PersonnelManagementSystem.bean.Menu">
                 <id column="id3" property="id"/>
                 <result column="name3" property="name" jdbcType="VARCHAR"/>
             </collection>
         </collection>
     </resultMap>
-    <select id="getAllMenu" resultType="org.PersonnelManagementSystem.bean.Menu">
+    <select id="getAllMenu" resultMap="BaseResultMap">
         SELECT m.*, r.id AS rid, r.name as rname, r.nameZh as rnamezh
         from menu m
                  left join menu_role mr on m.id = mr.menu$id

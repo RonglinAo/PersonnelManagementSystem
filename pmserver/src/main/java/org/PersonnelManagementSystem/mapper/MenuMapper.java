@@ -16,4 +16,6 @@ import java.util.List;
 @Repository
 public interface MenuMapper {
     List<Menu> getAllMenu();
+
+    List<Menu> getMenuByHrId(long id);
 }

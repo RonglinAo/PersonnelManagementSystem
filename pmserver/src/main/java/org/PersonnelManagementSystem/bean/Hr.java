@@ -28,6 +28,10 @@ public class Hr implements Serializable, UserDetails {
     private String avatar;
     private String remark;
     private boolean enable;
+    private List<Role> roles;
+
+    public Hr() {
+    }
 
     public Long getId() {
         return id;
@@ -67,11 +71,6 @@ public class Hr implements Serializable, UserDetails {
 
     public List<Role> getRoles() {
         return roles;
-    }
-
-    private List<Role> roles;
-
-    public Hr() {
     }
 
     @Override

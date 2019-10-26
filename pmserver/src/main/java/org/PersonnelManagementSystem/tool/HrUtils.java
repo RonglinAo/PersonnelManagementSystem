@@ -5,7 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * @program: PersonnelManagementSystem
- * @description: 获取SecurityContext中的Hr的信息
+ * @description: 获取当前登录的Hr的信息
  * @author: Ronglin.A
  * @create: 2019-10-21 11:53
  */

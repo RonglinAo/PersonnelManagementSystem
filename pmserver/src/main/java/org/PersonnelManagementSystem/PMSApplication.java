@@ -8,9 +8,9 @@ import org.springframework.cache.annotation.EnableCaching;
 @SpringBootApplication
 @MapperScan("org.PersonnelManagementSystem.mapper")
 @EnableCaching
-public class PersonnelManagementSystemApplication {
+public class PMSApplication {
     public static void main(String[] args) {
-        SpringApplication.run(PersonnelManagementSystemApplication.class, args);
+        SpringApplication.run(PMSApplication.class, args);
     }
 
 }

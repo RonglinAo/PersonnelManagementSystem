@@ -18,5 +18,5 @@ import java.util.List;
 public interface HrMapper {
     Hr loadHrByHrEmail(String email);
 
-    List<Role> getHrRoleByHrId(String id);
+    List<Role> getRoleByHrId(String id);
 }

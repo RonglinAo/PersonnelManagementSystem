@@ -28,6 +28,47 @@ public class Hr implements Serializable, UserDetails {
     private String avatar;
     private String remark;
     private boolean enable;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
     private List<Role> roles;
 
     public Hr() {

@@ -19,6 +19,7 @@
             <result column="rname" property="name"/>
             <result column="rnamezh" property="nameZh"/>
         </collection>
+        <!--二级菜单-->
         <collection property="children" ofType="org.PersonnelManagementSystem.bean.Menu">
             <id column="id2" property="id"/>
             <result column="path2" property="path" jdbcType="VARCHAR"/>
@@ -29,6 +30,7 @@
                 <result column="keepAlive2" property="keepAlive"/>
                 <result column="requireAuth2" property="requireAuth"/>
             </association>
+            <!--三级菜单-->
             <collection property="children" ofType="org.PersonnelManagementSystem.bean.Menu">
                 <id column="id3" property="id"/>
                 <result column="name3" property="name" jdbcType="VARCHAR"/>
